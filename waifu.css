@@ -68,8 +68,8 @@
 
 #live2d {
 	cursor: grab;
-	height: 300px;
-	position: relative;
+	height: 400px;
+	position: absolute;
 	width: 300px;
 }
 
