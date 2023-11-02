@@ -9,20 +9,6 @@
 
 [English](README.en.md)
 
-## 特性
-
-在网页中添加 Live2D 看板娘。兼容 PJAX，支持无刷新加载。
-
-<img src="assets/screenshot-2.png" width="280"><img src="assets/screenshot-3.png" width="280"><img src="assets/screenshot-1.png" width="270">
-
-（注：以上人物模型仅供展示之用，本仓库并不包含任何模型。）
-
-你也可以查看示例网页：
-
-- 在 [米米的博客](https://zhangshuqiao.org) 的左下角可查看效果
-- [demo.html](https://mi.js.org/live2d-widget/demo/demo.html)，展现基础功能
-- [login.html](https://mi.js.org/live2d-widget/demo/login.html)，仿 NPM 的登陆界面
-
 ## 使用
 
 如果你是小白，或者只需要最基础的功能，那么只用将这一行代码加入 html 页面的 `head` 或 `body` 中，即可加载看板娘：
@@ -107,37 +93,6 @@ https://example.com/path/to/live2d-widget/
 <script src="https://example.com/path/to/live2d-widget/autoload.js"></script>
 ```
 就可以加载了。
-
-## 鸣谢
-
-<a href="https://www.browserstack.com/">
-  <picture>
-    <source media="(prefers-color-scheme: dark)" height="80" srcset="https://d98b8t1nnulk5.cloudfront.net/production/images/layout/logo-header.png?1469004780">
-    <source media="(prefers-color-scheme: light)" height="80" srcset="https://live.browserstack.com/images/opensource/browserstack-logo.svg">
-    <img alt="BrowserStack Logo" height="80" src="https://live.browserstack.com/images/opensource/browserstack-logo.svg">
-  </picture>
-</a>
-
-> 感谢 BrowserStack 容许我们在真实的浏览器中测试此项目。  
-> Thanks to [BrowserStack](https://www.browserstack.com/) for providing the infrastructure that allows us to test in real browsers!
-
-<a href="https://www.jsdelivr.com">
-  <picture>
-    <source media="(prefers-color-scheme: dark)" height="80" srcset="https://raw.githubusercontent.com/jsdelivr/jsdelivr-media/master/white/svg/jsdelivr-logo-horizontal.svg">
-    <source media="(prefers-color-scheme: light)" height="80" srcset="https://raw.githubusercontent.com/jsdelivr/jsdelivr-media/master/default/svg/jsdelivr-logo-horizontal.svg">
-    <img alt="jsDelivr Logo" height="80" src="https://raw.githubusercontent.com/jsdelivr/jsdelivr-media/master/default/svg/jsdelivr-logo-horizontal.svg">
-  </picture>
-</a>
-
-> 感谢 jsDelivr 提供的 CDN 服务。  
-> Thanks jsDelivr for providing public CDN service.
-
-代码自这篇博文魔改而来：  
-https://www.fghrsh.net/post/123.html
-
-感谢 [一言](https://hitokoto.cn) 提供的语句接口。
-
-点击看板娘的纸飞机按钮时，会出现一个彩蛋，这来自于 [WebsiteAsteroids](http://www.websiteasteroids.com)。
 
 ## 更多
 
