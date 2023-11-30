@@ -1,4 +1,7 @@
-### 需要使用的话也可以联系我要导入代码~
+### 使用方法：把以下代码加入你的网页的 `<head>`
+```
+<script data-swup-reload-script src="https://live2dwidget.leafyee.xyz/autoload.js"></script>
+```
 
 ### 冰糖葫芦好可爱(¯﹃¯)
 
