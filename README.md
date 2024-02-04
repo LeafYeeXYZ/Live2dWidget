@@ -1,6 +1,6 @@
 ### 使用方法：把以下代码加入你的网页的 `<head>`
 ```
-<script data-swup-reload-script src="https://live2dwidget.leafyee.xyz/autoload.js"></script>
+<script src="https://live2dwidget.leafyee.xyz/autoload.js"></script>
 ```
 
 ### 冰糖葫芦好可爱(¯﹃¯)
