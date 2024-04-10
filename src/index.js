@@ -33,33 +33,13 @@ function loadWidget(config) {
     })();
 
     function welcomeMessage(time) {
-        if (location.pathname === "/") { // 如果是主页
-            for (let { hour, text } of time) {
-                const now = new Date(),
-                    after = hour.split("-")[0],
-                    before = hour.split("-")[1] || after;
-                if (after <= now.getHours() && now.getHours() <= before) {
-                    return text;
-                }
+        for (const { start, end, text } of time) {
+            const now = new Date().getHours()
+            if (start <= now && now <= end) {
+                return text
             }
         }
-        const text = `欢迎阅读<span>「${document.title.split(" - ")[0]}」</span>`;
-        let from;
-        if (document.referrer !== "") {
-            const referrer = new URL(document.referrer),
-                domain = referrer.hostname.split(".")[1];
-            const domains = {
-                "baidu": "百度",
-                "so": "360搜索",
-                "google": "谷歌搜索"
-            };
-            if (location.hostname === referrer.hostname) return text;
-
-            if (domain in domains) from = domains[domain];
-            else from = referrer.hostname;
-            return `Hello！来自 <span>${from}</span> 的朋友<br>${text}`;
-        }
-        return text;
+        return '欢迎回来~'
     }
 
     function registerEventListener(result) {
