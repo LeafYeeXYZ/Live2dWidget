@@ -1,6 +1,9 @@
 // 从当前 <script> 标签获取基础路径
 const script = document.currentScript
 const BASE_URL = script.src.replace(/autoload.js$/, '')
+// 从 data-tools 属性获取工具列表
+// ['hitokoto', 'asteroids', 'switch-model', 'switch-texture', 'photo', 'info', 'quit']
+const TOOLS = script.getAttribute('data-tools').split(',')
 // 将 waifu.css live2d.min.js waifu-tips.js 加载到页面中
 if (screen.width >= 768) {
 	const live2d = document.createElement('script')
@@ -27,8 +30,7 @@ if (screen.width >= 768) {
 	]).then(() => {
 		initWidget({
 			BASE_URL: BASE_URL,
-			tools: ['asteroids', 'switch-model', 'quit']
-			// tools: ['hitokoto', 'asteroids', 'switch-model', 'switch-texture', 'photo', 'info', 'quit']
+			TOOLS: TOOLS,
 		})
 	})
 }

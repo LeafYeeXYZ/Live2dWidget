@@ -20,10 +20,10 @@ function loadWidget(config) {
     (function registerTools() {
         tools["switch-model"].callback = () => model.loadOtherModel();
         tools["switch-texture"].callback = () => model.loadRandModel();
-        if (!Array.isArray(config.tools)) {
-            config.tools = Object.keys(tools);
+        if (!Array.isArray(config.TOOLS)) {
+            config.TOOLS = Object.keys(tools);
         }
-        for (let tool of config.tools) {
+        for (let tool of config.TOOLS) {
             if (tools[tool]) {
                 const { icon, callback } = tools[tool];
                 document.getElementById("waifu-tool").insertAdjacentHTML("beforeend", `<span id="waifu-tool-${tool}">${icon}</span>`);
