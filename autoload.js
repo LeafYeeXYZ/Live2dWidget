@@ -1,43 +1,34 @@
-// live2d_path 参数建议使用绝对路径
-const live2d_path = "https://live2dwidget.leafyee.xyz/";
-//const live2d_path = "/live2d-widget/";
-
-// 封装异步加载资源的方法
-function loadExternalResource(url, type) {
-	return new Promise((resolve, reject) => {
-		let tag;
-
-		if (type === "css") {
-			tag = document.createElement("link");
-			tag.rel = "stylesheet";
-			tag.href = url;
-		}
-		else if (type === "js") {
-			tag = document.createElement("script");
-			tag.src = url;
-		}
-		if (tag) {
-			tag.onload = () => resolve(url);
-			tag.onerror = () => reject(url);
-			document.head.appendChild(tag);
-		}
-	});
-}
-
-// 加载 waifu.css live2d.min.js waifu-tips.js
+// 从当前 <script> 标签获取基础路径
+const script = document.currentScript
+const BASE_URL = script.src.replace(/autoload.js$/, '')
+// 将 waifu.css live2d.min.js waifu-tips.js 加载到页面中
 if (screen.width >= 768) {
+	const live2d = document.createElement('script')
+	const waifuCss = document.createElement('link')
+	const waifuTips = document.createElement('script')
+	live2d.src = BASE_URL + 'live2d.min.js'
+	waifuCss.rel = 'stylesheet'
+	waifuCss.href = BASE_URL + 'waifu.css'
+	waifuTips.src = BASE_URL + 'waifu-tips.js'
+	// 当所有资源加载完成后初始化看板娘
 	Promise.all([
-		loadExternalResource(live2d_path + "waifu.css", "css"),
-		loadExternalResource(live2d_path + "live2d.min.js", "js"),
-		loadExternalResource(live2d_path + "waifu-tips.js", "js")
+		new Promise((resolve, _reject) => {
+			document.head.appendChild(waifuCss)
+			waifuCss.onload = () => resolve(true)
+		}),
+		new Promise((resolve, _reject) => {
+			document.head.appendChild(live2d)
+			live2d.onload = () => resolve(true)
+		}),
+		new Promise((resolve, _reject) => {
+			document.head.appendChild(waifuTips)
+			waifuTips.onload = () => resolve(true)
+		})
 	]).then(() => {
-		// 配置选项的具体用法见 README.md
 		initWidget({
-			waifuPath: live2d_path + "waifu-tips.json",
-			//apiPath: "https://live2d.fghrsh.net/api/",
-			cdnPath: live2d_path,
-			//tools: ["hitokoto", "asteroids", "switch-model", "switch-texture", "photo", "info", "quit"]
-			tools: ["asteroids", "switch-model", "photo", "quit"]
-		});
-	});
+			BASE_URL: BASE_URL,
+			tools: ['asteroids', 'switch-model', 'quit']
+			// tools: ['hitokoto', 'asteroids', 'switch-model', 'switch-texture', 'photo', 'info', 'quit']
+		})
+	})
 }

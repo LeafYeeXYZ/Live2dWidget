@@ -135,19 +135,13 @@ function loadWidget(config) {
             modelTexturesId = 53; // 材质 ID
         }
         model.loadModel(modelId, modelTexturesId);
-        fetch(config.waifuPath)
+        fetch(config.BASE_URL + 'waifu-tips.json')
             .then(response => response.json())
             .then(registerEventListener);
     })();
 }
 
-function initWidget(config, apiPath) {
-    if (typeof config === "string") {
-        config = {
-            waifuPath: config,
-            apiPath
-        };
-    }
+function initWidget(config) {
     document.body.insertAdjacentHTML("beforeend", `<div id="waifu-toggle">
             <span>看板娘</span>
         </div>`);
