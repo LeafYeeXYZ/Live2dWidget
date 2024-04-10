@@ -1,7 +1,3 @@
-// live2d_path 参数建议使用绝对路径
-const live2d_path = "https://live2dwidget.leafyee.xyz/";
-//const live2d_path = "/live2d-widget/";
-
 // 封装异步加载资源的方法
 function loadExternalResource(url, type) {
 	return new Promise((resolve, reject) => {
@@ -27,37 +23,17 @@ function loadExternalResource(url, type) {
 // 加载 waifu.css live2d.min.js waifu-tips.js
 if (screen.width >= 768) {
 	Promise.all([
-		loadExternalResource(live2d_path + "waifu.css", "css"),
-		loadExternalResource(live2d_path + "live2d.min.js", "js"),
-		loadExternalResource(live2d_path + "waifu-tips.js", "js")
+		loadExternalResource("/waifu.css", "css"),
+		loadExternalResource("/live2d.min.js", "js"),
+		loadExternalResource("/waifu-tips.js", "js")
 	]).then(() => {
 		// 配置选项的具体用法见 README.md
 		initWidget({
-			waifuPath: live2d_path + "waifu-tips.json",
+			waifuPath: "/waifu-tips.json",
 			//apiPath: "https://live2d.fghrsh.net/api/",
-			cdnPath: "https://live2dapi.leafyee.xyz/",
+			cdnPath: "/",
 			//tools: ["hitokoto", "asteroids", "switch-model", "switch-texture", "photo", "info", "quit"]
 			tools: ["asteroids", "switch-model", "photo", "quit"]
 		});
 	});
 }
-
-console.log(`
-  く__,.ヘヽ.        /  ,ー､ 〉
-           ＼ ', !-─‐-i  /  /´
-           ／｀ｰ'       L/／｀ヽ､
-         /   ／,   /|   ,   ,       ',
-       ｲ   / /-‐/  ｉ  L_ ﾊ ヽ!   i
-        ﾚ ﾍ 7ｲ｀ﾄ   ﾚ'ｧ-ﾄ､!ハ|   |
-          !,/7 '0'     ´0iソ|    |
-          |.从"    _     ,,,, / |./    |
-          ﾚ'| i＞.､,,__  _,.イ /   .i   |
-            ﾚ'| | / k_７_/ﾚ'ヽ,  ﾊ.  |
-              | |/i 〈|/   i  ,.ﾍ |  i  |
-             .|/ /  ｉ：    ﾍ!    ＼  |
-              kヽ>､ﾊ    _,.ﾍ､    /､!
-              !'〈//｀Ｔ´', ＼ ｀'7'ｰr'
-              ﾚ'ヽL__|___i,___,ンﾚ|ノ
-                  ﾄ-,/  |___./
-                  'ｰ'    !_,.:
-`);

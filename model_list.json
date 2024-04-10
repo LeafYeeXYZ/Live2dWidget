@@ -1,0 +1,16 @@
+{
+    "models": [
+        "shuangpinai",
+        "bingtanghulu",
+        "tangyuan",
+        "danzaimian",
+        "jironjinsisun"
+    ],
+    "messages": [
+        "你好~",
+        "你好OWO",
+        "你好QAQ",
+        "你好!",
+        "你好呀~"
+    ]
+}
