@@ -24,57 +24,6 @@
 		"selector": "#waifu-tool-quit",
 		"text": ["到了要说再见的时候了吗？", "呜呜 QAQ 后会有期……", "不要抛弃我呀……", "我们，还能再见面吗……", "哼，你会后悔的！"]
 	}, {
-		"selector": ".menu-item-home a",
-		"text": ["点击前往首页，想回到上一页可以使用浏览器的后退功能哦。", "点它就可以回到首页啦！", "回首页看看吧。"]
-	}, {
-		"selector": ".menu-item-about a",
-		"text": ["你想知道我家主人是谁吗？", "这里有一些关于我家主人的秘密哦，要不要看看呢？", "发现主人出没地点！"]
-	}, {
-		"selector": ".menu-item-tags a",
-		"text": ["点击就可以看文章的标签啦！", "点击来查看所有标签哦。"]
-	}, {
-		"selector": ".menu-item-categories a",
-		"text": ["文章都分类好啦～", "点击来查看文章分类哦。"]
-	}, {
-		"selector": ".menu-item-archives a",
-		"text": ["翻页比较麻烦吗，那就来看看文章归档吧。", "文章目录都整理在这里啦！"]
-	}, {
-		"selector": ".menu-item-friends a",
-		"text": ["这是我的朋友们哦ヾ(◍°∇°◍)ﾉﾞ", "要去大佬们的家看看吗？", "要去拜访一下我的朋友们吗？"]
-	}, {
-		"selector": ".menu-item-search a",
-		"text": ["找不到想看的内容？搜索看看吧！", "在找什么东西呢，需要帮忙吗？"]
-	}, {
-		"selector": ".menu-item a",
-		"text": ["快看看这里都有什么呢？"]
-	}, {
-		"selector": ".site-author",
-		"text": ["我家主人好看吗？", "这是我家主人(*´∇｀*)"]
-	}, {
-		"selector": ".site-state",
-		"text": ["这是文章的统计信息～", "要不要点进去看看？"]
-	}, {
-		"selector": ".feed-link a",
-		"text": ["这里可以使用 RSS 订阅呢！", "利用 feed 订阅器，就能快速知道博客有没有更新了呢。"]
-	}, {
-		"selector": ".cc-opacity, .post-copyright-author",
-		"text": ["要记得规范转载哦。", "所有文章均采用 CC BY-NC-SA 4.0 许可协议～", "转载前要先注意下文章的版权协议呢。"]
-	}, {
-		"selector": ".links-of-author",
-		"text": ["这里是主人的常驻地址哦。", "这里有主人的联系方式！"]
-	}, {
-		"selector": ".followme",
-		"text": ["手机扫一下就能继续看，很方便呢～", "扫一扫，打开新世界的大门！"]
-	}, {
-		"selector": ".fancybox img, img.medium-zoom-image",
-		"text": ["点击图片可以放大呢！"]
-	}, {
-		"selector": ".copy-btn",
-		"text": ["代码可以直接点击复制哟。"]
-	}, {
-		"selector": ".highlight .table-container, .gist",
-		"text": ["GitHub！我是新手！", "PHP 是最好的语言！"]
-	}, {
 		"selector": "a[href^='mailto']",
 		"text": ["邮件我会及时回复的！", "点击就可以发送邮件啦～"]
 	}, {
@@ -93,9 +42,6 @@
 		"selector": "a[itemprop='discussionUrl']",
 		"text": ["要去看看评论吗？"]
 	}, {
-		"selector": ".beian a",
-		"text": ["我也是有户口的人哦。", "我的主人可是遵纪守法的好主人。"]
-	}, {
 		"selector": ".container a[href^='http'], .nav-link .nav-text",
 		"text": ["要去看看 <span>{text}</span> 吗！", "去 <span>{text}</span> 逛逛吧~", "到 <span>{text}</span> 看看吧~"]
 	}, {
@@ -104,36 +50,6 @@
 	}, {
 		"selector": ".reward-container",
 		"text": ["我是不是棒棒哒～快给我点赞吧！", "要打赏我嘛？好期待啊～", "主人最近在吃土呢，很辛苦的样子，给他一些钱钱吧～"]
-	}, {
-		"selector": "#wechat",
-		"text": ["这是我的微信二维码～"]
-	}, {
-		"selector": "#alipay",
-		"text": ["这是我的支付宝哦！"]
-	}, {
-		"selector": "#bitcoin",
-		"text": ["这是我的比特币账号！"]
-	}, {
-		"selector": "#needsharebutton-postbottom .btn",
-		"text": ["好东西要让更多人知道才行哦。", "觉得文章有帮助的话，可以分享给更多需要的朋友呢。"]
-	}, {
-		"selector": ".need-share-button_weibo",
-		"text": ["微博？来分享一波喵！"]
-	}, {
-		"selector": ".need-share-button_wechat",
-		"text": ["分享到微信吧！"]
-	}, {
-		"selector": ".need-share-button_douban",
-		"text": ["分享到豆瓣好像也不错！"]
-	}, {
-		"selector": ".need-share-button_qqzone",
-		"text": ["QQ 空间，一键转发，耶～"]
-	}, {
-		"selector": ".need-share-button_twitter",
-		"text": ["Twitter？好像是不存在的东西？"]
-	}, {
-		"selector": ".need-share-button_facebook",
-		"text": ["emmm…FB 好像也是不存在的东西？"]
 	}, {
 		"selector": ".post-nav-item a[rel='next']",
 		"text": ["来看看下一篇文章吧。", "点它可以看下一篇文章哦！", "要翻到下一篇文章吗？"]
@@ -173,16 +89,13 @@
 	}, {
 		"selector": ".vcontent",
 		"text": ["哇，快看看这个精彩评论！", "如果有疑问，请尽快留言哦～"]
+	}, {
+		"selector": ".weather",
+		"text": ["今天的天气怎么样呢？", "今天是个适合出门的日子吗？"]
 	}],
 	"click": [{
 		"selector": "#live2d",
 		"text": ["是…是不小心碰到了吧…", "你看到我的小熊了吗？", "再摸的话我可要报警了！", "110 吗，这里有个变态一直在RUA我", "干嘛动我呀！小心我咬你！", "别摸我，有什么好摸的！", "诶嘿嘿，摸摸头，舒服~", "想要和我做什么呢~", "喵~喵~~"]
-	}, {
-		"selector": ".veditor",
-		"text": ["要吐槽些什么呢？", "一定要认真填写喵～", "有什么想说的吗？"]
-	}, {
-		"selector": ".vsubmit",
-		"text": ["输入验证码就可以提交评论啦～"]
 	}],
 	"seasons": [{
 		"date": "01/01-01/01",
