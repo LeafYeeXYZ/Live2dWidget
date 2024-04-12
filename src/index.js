@@ -1,7 +1,8 @@
-import Model from "./model.js";
-import showMessage from "./message.js";
-import randomSelection from "./utils.js";
-import tools from "./tools.js";
+import Model from "./model.js"
+import showMessage from "./message.js"
+import randomSelection from "./utils.js"
+import tools from "./tools.js"
+import './live2d.min.js'
 
 function loadWidget(config) {
     const model = new Model(config);
@@ -105,7 +106,7 @@ function loadWidget(config) {
             modelTexturesId = 53; // 材质 ID
         }
         model.loadModel(modelId, modelTexturesId);
-        fetch(config.BASE_URL + 'waifu-tips.json')
+        fetch(config.BASE_URL + 'static/waifu-tips.json')
             .then(response => response.json())
             .then(registerEventListener);
     })();
@@ -139,4 +140,21 @@ function initWidget(config) {
     }
 }
 
-export default initWidget;
+window.initWidget = initWidget
+
+// 从当前 <script> 标签获取基础路径
+const script = document.currentScript
+// ['hitokoto', 'asteroids', 'switch-model', 'switch-texture', 'photo', 'info', 'quit']
+const BASE_URL = script.getAttribute('data-server')
+const TOOLS = script.getAttribute('data-tools').split(',')
+// 将 waifu.css 加载到页面中
+const waifuCss = document.createElement('link')
+waifuCss.rel = 'stylesheet'
+waifuCss.href = BASE_URL + 'static/waifu.css'
+document.head.appendChild(waifuCss)
+// 加载看板娘
+screen.width >= 768 && initWidget({
+    BASE_URL: BASE_URL,
+    TOOLS: TOOLS,
+})
+

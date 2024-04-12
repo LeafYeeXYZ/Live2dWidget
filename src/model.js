@@ -13,7 +13,7 @@ class Model {
     }
 
     async loadModelList() {
-        const response = await fetch(`${this.BASE_URL}model_list.json`);
+        const response = await fetch(`${this.BASE_URL}static/model_list.json`);
         this.modelList = await response.json();
     }
 

@@ -1,11 +1,3 @@
-import fa_comment from "@fortawesome/fontawesome-free/svgs/solid/comment.svg";
-import fa_paper_plane from "@fortawesome/fontawesome-free/svgs/solid/paper-plane.svg";
-import fa_user_circle from "@fortawesome/fontawesome-free/svgs/solid/circle-user.svg";
-import fa_street_view from "@fortawesome/fontawesome-free/svgs/solid/street-view.svg";
-import fa_camera_retro from "@fortawesome/fontawesome-free/svgs/solid/camera-retro.svg";
-import fa_info_circle from "@fortawesome/fontawesome-free/svgs/solid/circle-info.svg";
-import fa_xmark from "@fortawesome/fontawesome-free/svgs/solid/xmark.svg";
-
 import showMessage from "./message.js";
 
 function showHitokoto() {
@@ -23,11 +15,11 @@ function showHitokoto() {
 
 const tools = {
     "hitokoto": {
-        icon: fa_comment,
+        icon: '✏️',
         callback: showHitokoto
     },
     "asteroids": {
-        icon: fa_paper_plane,
+        icon: '🚀',
         callback: () => {
             if (window.Asteroids) {
                 if (!window.ASTEROIDSPLAYERS) window.ASTEROIDSPLAYERS = [];
@@ -40,15 +32,15 @@ const tools = {
         }
     },
     "switch-model": {
-        icon: fa_user_circle,
+        icon: '🫡',
         callback: () => {}
     },
     "switch-texture": {
-        icon: fa_street_view,
+        icon: '👗',
         callback: () => {}
     },
     "photo": {
-        icon: fa_camera_retro,
+        icon: '📷',
         callback: () => {
             showMessage("照好了嘛，是不是很可爱呢？", 6000, 9);
             Live2D.captureName = "photo.png";
@@ -56,13 +48,13 @@ const tools = {
         }
     },
     "info": {
-        icon: fa_info_circle,
+        icon: 'ℹ️',
         callback: () => {
-            open("https://github.com/stevenjoezhang/live2d-widget");
+            open("https://github.com/LeafYeeXYZ/Live2dWidget");
         }
     },
     "quit": {
-        icon: fa_xmark,
+        icon: '❌',
         callback: () => {
             localStorage.setItem("waifu-display", Date.now());
             showMessage("愿你有一天能与重要的人重逢。", 2000, 11);
