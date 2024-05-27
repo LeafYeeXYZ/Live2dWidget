@@ -32,10 +32,10 @@ export function loadWidget(config: { BASE_URL: string, TOOLS: ('hitokoto' | 'swi
         }
     }()
 
-    function welcomeMessage(time: { start: number, end: number, text: string }[]) {
+    function welcomeMessage(time: { start: string, end: string, text: string }[]) {
         for (const { start, end, text } of time) {
             const now = new Date().getHours()
-            if (start <= now && now <= end) {
+            if (+start <= now && now <= +end) {
                 return text
             }
         }

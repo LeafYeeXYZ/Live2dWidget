@@ -1,5 +1,5 @@
-import '../src/live2d.min.js'
-import { initWidget } from '../src/main'
+import './live2d.min.js'
+import { initWidget } from './main'
 
 window.initWidget = initWidget
 
