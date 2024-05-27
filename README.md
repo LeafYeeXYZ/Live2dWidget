@@ -11,7 +11,7 @@
 ```html
 <script
   src="https://live2dwidget.leafyee.xyz/client.js"
-  data-tools="hitokoto,switch-model,switch-texture,photo,info,quit"
+  data-tools="hitokoto,switch-model,switch-texture,info,quit"
   data-server="https://live2dwidget.leafyee.xyz/"
   defer
 ></script>

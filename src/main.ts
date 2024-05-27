@@ -3,7 +3,7 @@ import { randomSelection, showMessage } from './utils'
 import { tools } from './tools'
 import waifuTips from './waifu_tips.json'
 
-export function loadWidget(config: { BASE_URL: string, TOOLS: ('hitokoto' | 'switch-model' | 'switch-texture' | 'photo' | 'info' | 'quit')[] }): void {
+export function loadWidget(config: { BASE_URL: string, TOOLS: ('hitokoto' | 'switch-model' | 'switch-texture' | 'info' | 'quit')[] }): void {
     const model = new Model(config)
     localStorage.removeItem("waifu-display")
     sessionStorage.removeItem("waifu-text")
@@ -21,7 +21,7 @@ export function loadWidget(config: { BASE_URL: string, TOOLS: ('hitokoto' | 'swi
         tools["switch-model"].callback = () => model.loadOtherModel();
         tools["switch-texture"].callback = () => model.loadRandModel();
         if (!Array.isArray(config.TOOLS)) {
-            config.TOOLS = Object.keys(tools) as ('hitokoto' | 'switch-model' | 'switch-texture' | 'photo' | 'info' | 'quit')[]
+            config.TOOLS = Object.keys(tools) as ('hitokoto' | 'switch-model' | 'switch-texture' | 'info' | 'quit')[]
         }
         for (let tool of config.TOOLS) {
             if (tools[tool]) {
@@ -101,7 +101,7 @@ export function loadWidget(config: { BASE_URL: string, TOOLS: ('hitokoto' | 'swi
 
 export function initWidget(config: { 
   BASE_URL: string, 
-  TOOLS: ('hitokoto' | 'switch-model' | 'switch-texture' | 'photo' | 'info' | 'quit')[]
+  TOOLS: ('hitokoto' | 'switch-model' | 'switch-texture' | 'info' | 'quit')[]
 }): void {
     document.body.insertAdjacentHTML("beforeend", `<div id="waifu-toggle">
             <span>看板娘</span>

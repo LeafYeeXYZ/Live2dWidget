@@ -12,12 +12,12 @@ window.initWidget = initWidget
 // 从当前 <script> 标签获取基础路径
 const script = document.currentScript
 let BASE_URL = 'https://live2dwidget.leafyee.xyz/'
-let TOOLS = 'hitokoto,switch-model,switch-texture,photo,info,quit'
+let TOOLS = 'hitokoto,switch-model,switch-texture,info,quit'
 if (script) {
     BASE_URL = script.getAttribute('data-server') || BASE_URL
     TOOLS = script.getAttribute('data-tools') || TOOLS
 }
-const tools = TOOLS.split(',').map(tool => tool.trim()) as ('hitokoto' | 'switch-model' | 'switch-texture' | 'photo' | 'info' | 'quit')[]
+const tools = TOOLS.split(',').map(tool => tool.trim()) as ('hitokoto' | 'switch-model' | 'switch-texture' | 'info' | 'quit')[]
 // 将 waifu.css 加载到页面中
 const waifuCss = document.createElement('link')
 waifuCss.rel = 'stylesheet'

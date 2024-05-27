@@ -31,14 +31,6 @@ export const tools = {
         icon: '👗',
         callback: () => {}
     },
-    "photo": {
-        icon: '📷',
-        callback: () => {
-            showMessage("照好了嘛，是不是很可爱呢？", 6000, 9)
-            Live2D.captureName = "photo.png"
-            Live2D.captureFrame = true
-        }
-    },
     "info": {
         icon: 'ℹ️',
         callback: () => {
