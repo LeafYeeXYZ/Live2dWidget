@@ -10,9 +10,9 @@ declare global {
 window.initWidget = initWidget
 
 // 从当前 <script> 标签获取基础路径
-const script = document.currentScript ?? document.createElement('script')
-const BASE_URL = script.getAttribute('data-server') ?? 'https://live2dwidget.leafyee.xyz/'
-const TOOLS = script.getAttribute('data-tools')?.split(',') ?? ['hitokoto', 'switch-model', 'switch-texture', 'photo', 'info', 'quit']
+const script = document.currentScript
+const BASE_URL = script ? script.getAttribute('data-server')! : 'https://live2dwidget.leafyee.xyz/'
+const TOOLS = script ? script.getAttribute('data-tools')!.split(',') : ['hitokoto', 'switch-model', 'switch-texture', 'photo', 'info', 'quit']
 // 将 waifu.css 加载到页面中
 const waifuCss = document.createElement('link')
 waifuCss.rel = 'stylesheet'
@@ -23,4 +23,3 @@ screen.width >= 768 && initWidget({
     BASE_URL: BASE_URL,
     TOOLS: TOOLS as ('hitokoto' | 'switch-model' | 'switch-texture' | 'photo' | 'info' | 'quit')[]
 })
-
