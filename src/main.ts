@@ -45,7 +45,7 @@ export function loadWidget(config: { BASE_URL: string, TOOLS: ('hitokoto' | 'swi
     function registerEventListener(result: typeof waifuTips) {
         // 检测用户活动状态，并在空闲时显示消息
         let userAction = false
-        let userActionTimer: number | undefined
+        let userActionTimer: number
         let messageArray = result.message.default
         let lastHoverElement: string | null = null
         window.addEventListener("mousemove", () => userAction = true);
@@ -54,7 +54,7 @@ export function loadWidget(config: { BASE_URL: string, TOOLS: ('hitokoto' | 'swi
             if (userAction) {
                 userAction = false
                 clearInterval(userActionTimer)
-                userActionTimer = undefined
+                userActionTimer = 0
             } else if (!userActionTimer) {
                 userActionTimer = setInterval(() => {
                     showMessage(messageArray, 6000, 9)
@@ -83,11 +83,6 @@ export function loadWidget(config: { BASE_URL: string, TOOLS: ('hitokoto' | 'swi
             }
         });
 
-        const devtools = () => { };
-        console.log("%c", devtools);
-        devtools.toString = () => {
-            showMessage(result.message.console, 6000, 9);
-        };
         window.addEventListener("copy", () => {
             showMessage(result.message.copy, 6000, 9);
         });
@@ -96,12 +91,12 @@ export function loadWidget(config: { BASE_URL: string, TOOLS: ('hitokoto' | 'swi
         });
     }
 
-    (function initModel() {
+    void function initModel() {
         let modelId = Number(localStorage.getItem("modelId") ?? 1)
         let modelTexturesId = Number(localStorage.getItem("modelTexturesId") ?? 53)
-        model.loadModel(modelId, modelTexturesId, '')
+        model.loadModel(modelId, modelTexturesId, model.modelList.messages[modelId])
         registerEventListener(waifuTips)
-    })();
+    }()
 }
 
 export function initWidget(config: { 
