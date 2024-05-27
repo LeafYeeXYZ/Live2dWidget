@@ -1,10 +1,5 @@
 import { showMessage } from './utils'
 
-declare class Live2D {
-    static captureName: string
-    static captureFrame: boolean
-}
-
 function showHitokoto() {
     // 增加 hitokoto.cn 的 API
     fetch("https://v1.hitokoto.cn")
