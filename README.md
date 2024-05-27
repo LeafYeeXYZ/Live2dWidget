@@ -4,19 +4,23 @@
 把以下代码加入你的网页的 `<head>`
 
 ```html
+<script src="https://live2dwidget.leafyee.xyz/client.js" defer></script>
+```
+
+## 基础配置
+```html
 <script
   src="https://live2dwidget.leafyee.xyz/client.js"
-  id="live2d-widget"
   data-tools="hitokoto,switch-model,switch-texture,photo,info,quit"
   data-server="https://live2dwidget.leafyee.xyz/"
   defer
 ></script>
 ```
 
-- `data-tools` 为加载的小工具按钮，可以自行删减
-- `data-server` 为小组件的服务器地址，一般为 `src` 删去 `client.js` 的路径
+- `data-tools` 为加载的小工具按钮，可以自行删减; 默认为全部
+- `data-server` 为小组件的服务器地址，一般为 `src` 删去 `client.js` 的路径, 默认为 `https://live2dwidget.leafyee.xyz/`
 
-## 自定义配置
+## 进阶配置
 - `/public/model` 存放模型
 - `/src/model_list.json` 模型列表
 - `/src/waifu-tips.json` 中定义了触发条件（`selector`，CSS 选择器）和触发时显示的文字（`text`）
