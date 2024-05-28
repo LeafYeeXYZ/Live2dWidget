@@ -1,13 +1,9 @@
-import { initWidget } from './main'
-
 declare global {
     interface Window {
         initWidget: typeof initWidget
         loadlive2d?: (id: string, path: string) => void
     }
 }
-
-window.initWidget = initWidget
 
 // 从当前 <script> 标签获取基础路径
 const script = document.currentScript
@@ -27,6 +23,10 @@ document.head.appendChild(waifuCss)
 const live2dScript = document.createElement('script')
 live2dScript.src = BASE_URL.endsWith('/') ? BASE_URL + 'live2d.min.js' : BASE_URL + '/live2d.min.js'
 document.body.appendChild(live2dScript)
+
+// 加载看板娘
+import { initWidget } from './main'
+window.initWidget = initWidget
 // 加载看板娘
 let count: number = 0
 function tryLoadLive2d() {
