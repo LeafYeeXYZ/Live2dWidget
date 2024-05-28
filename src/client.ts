@@ -27,7 +27,25 @@ const live2dScript = document.createElement('script')
 live2dScript.src = BASE_URL.endsWith('/') ? BASE_URL + 'live2d.min.js' : BASE_URL + '/live2d.min.js'
 document.body.appendChild(live2dScript)
 // 加载看板娘
-screen.width >= 768 && initWidget({
-    BASE_URL: BASE_URL,
-    TOOLS: tools
-})
+declare global {
+    interface Window {
+        loadlive2d?: (id: string, path: string) => void
+    }
+}
+let count: number = 0
+function tryLoadLive2d() {
+    if (window.loadlive2d) {
+        initWidget({
+            BASE_URL: BASE_URL,
+            TOOLS: tools
+        })
+    } else if (count >= 50) {
+        console.error('Failed to load live2d.min.js')
+    } else {
+        count++
+        setTimeout(tryLoadLive2d, 100)
+    }
+}
+if (screen.width >= 768) {
+    tryLoadLive2d()
+}
