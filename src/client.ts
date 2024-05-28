@@ -3,6 +3,7 @@ import { initWidget } from './main'
 declare global {
     interface Window {
         initWidget: typeof initWidget
+        loadlive2d?: (id: string, path: string) => void
     }
 }
 
@@ -27,11 +28,6 @@ const live2dScript = document.createElement('script')
 live2dScript.src = BASE_URL.endsWith('/') ? BASE_URL + 'live2d.min.js' : BASE_URL + '/live2d.min.js'
 document.body.appendChild(live2dScript)
 // 加载看板娘
-declare global {
-    interface Window {
-        loadlive2d?: (id: string, path: string) => void
-    }
-}
 let count: number = 0
 function tryLoadLive2d() {
     if (window.loadlive2d) {
