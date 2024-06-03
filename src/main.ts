@@ -1,17 +1,94 @@
-import { Model } from './model'
 import { randomSelection, showMessage } from './utils'
 import { tools } from './tools'
 import waifuTips from './waifu_tips.json'
+import modelList from './model_list.json'
 
-export function loadWidget(config: { BASE_URL: string, TOOLS: ('hitokoto' | 'switch-model' | 'switch-texture' | 'info' | 'quit')[] }): void {
+declare class PIXI {
+    static Application: any
+    static live2d: any
+}
+let pixiApp: any
+
+class Model {
+    BASE_URL: string
+    modelList: {
+        models: string[],
+        messages: string[]
+    }
+
+    constructor(config: { BASE_URL: string, TOOLS: string[] }) {
+        this.modelList = modelList
+        let { BASE_URL } = config
+        if (typeof BASE_URL === "string") {
+            if (!BASE_URL.endsWith("/")) BASE_URL += "/"
+        } else {
+            throw "Invalid initWidget argument!"
+        }
+        this.BASE_URL = BASE_URL
+    }
+
+    async loadModel(
+        modelId: number,
+        modelTexturesId: number,
+        message: string | string[]
+    ) {
+        localStorage.setItem("modelId", modelId.toString())
+        localStorage.setItem("modelTexturesId", modelTexturesId.toString())
+        showMessage(message, 4000, 10);
+        const target = randomSelection(this.modelList.models[modelId])
+        // loadlive2d("live2d", `${this.BASE_URL}model/${target}/index.json`)
+        loadlive2dPixi(`${this.BASE_URL}model/${target}/index.json`)
+    }
+
+    async loadRandModel() {
+        const modelId: number = localStorage.getItem("modelId") ? Number(localStorage.getItem("modelId")) : 0
+        const target = randomSelection(this.modelList.models[modelId])
+        // loadlive2d("live2d", `${this.BASE_URL}model/${target}/index.json`)
+        loadlive2dPixi(`${this.BASE_URL}model/${target}/index.json`)
+        showMessage("我的新衣服好看嘛？", 4000, 10);
+    }
+
+    async loadOtherModel() {
+        let modelId: number = localStorage.getItem("modelId") ? Number(localStorage.getItem("modelId")) : 0
+        const index = (++modelId >= this.modelList.models.length) ? 0 : modelId;
+        this.loadModel(index, 0, this.modelList.messages[index])
+    }
+}
+
+async function loadlive2dPixi(jsonPath: string) {
+	const model = await PIXI.live2d.Live2DModel.from(jsonPath);
+	if (pixiApp.stage.children.length > 0) {
+		pixiApp.stage.removeChildren(0);
+	}
+	pixiApp.stage.addChild(model);
+	const parentWidth = pixiApp.renderer.width;
+	const parentHeight = pixiApp.renderer.height;
+	// Scale to fit the stage
+	const ratio = Math.min(parentWidth / model.width, parentHeight / model.height);
+	model.scale.set(ratio, ratio);
+	// Align bottom and center horizontally
+	model.x = (parentWidth - model.width) / 2;
+	model.y = parentHeight - model.height;
+}
+
+function loadWidget(config: { BASE_URL: string, TOOLS: ('hitokoto' | 'switch-model' | 'switch-texture' | 'info' | 'quit')[] }): void {
     const model = new Model(config)
     localStorage.removeItem("waifu-display")
     sessionStorage.removeItem("waifu-text")
-    document.body.insertAdjacentHTML("beforeend", `<div id="waifu">
+    document.body.insertAdjacentHTML("beforeend", `
+        <div id="waifu">
             <div id="waifu-tips"></div>
-            <canvas id="live2d" width="800" height="800"></canvas>
+            <canvas id="live2d"></canvas>
             <div id="waifu-tool"></div>
-        </div>`)
+        </div>`
+    )
+    // Create PIXI application
+	const live2dCanvas = document.getElementById('live2d');
+	pixiApp = new PIXI.Application({
+		view: live2dCanvas,
+		resizeTo: live2dCanvas,
+		transparent: true,
+	})
     // https://stackoverflow.com/questions/24148403/trigger-css-transition-on-appended-element
     setTimeout(() => {
         document.getElementById("waifu")!.style.bottom = '0'
@@ -92,7 +169,7 @@ export function loadWidget(config: { BASE_URL: string, TOOLS: ('hitokoto' | 'swi
     }
 
     void function initModel() {
-        let modelId = Number(localStorage.getItem("modelId") ?? 1)
+        let modelId = Number(localStorage.getItem("modelId") ?? 0)
         let modelTexturesId = Number(localStorage.getItem("modelTexturesId") ?? 53)
         model.loadModel(modelId, modelTexturesId, model.modelList.messages[modelId])
         registerEventListener(waifuTips)
