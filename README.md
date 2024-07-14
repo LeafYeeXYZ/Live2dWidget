@@ -37,6 +37,6 @@
 ## 自己部署
 - 安装依赖: `npm install` 或 `pnpm install` 或 `bun install`
 - 构建命令: `npm run build` 或 `pnpm run build` 或 `bun run build`
-- 输出目录未 `dist`，将 `dist` 目录部署到你的服务器或 `Vercel`, `Cloudflare Pages` 等静态网站托管服务即可
+- 输出目录为 `dist`，将 `dist` 目录部署到你的服务器或 `Vercel`, `Cloudflare Pages` 等静态网站托管服务即可
 
 #### 冰糖葫芦好可爱(¯﹃¯)
